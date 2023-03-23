@@ -23,7 +23,7 @@
             margin: 3vw auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80vw;
+            width: fit-content;
         }
 
         /* Style for the close button */
@@ -102,6 +102,12 @@
             // Add a CSS class to the clicked image to gray it out
             currentDomImage.className = "grayed";
         };
+    });
+    // when user pressed Escape , it will hide the modal
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            modal.style.display = "none";
+        }
     });
 
 </script>
