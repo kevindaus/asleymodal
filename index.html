@@ -79,18 +79,31 @@
 </div>
 
 <script type="application/javascript">
+    // Get the modal element by its ID
     let modal = document.getElementById("thumbnailModal");
+
+    // Get the close icon element by its ID
     let closeModalIcon = document.getElementById("modal-close-icon");
+
+    // Set up an onclick event listener for the close icon that will hide the modal when clicked
     closeModalIcon.onclick = function () {
         modal.style.display = "none";
     };
+
+    // Get all the DOM image elements inside elements with class "image-list-container"
     document.querySelectorAll(".image-list-container img").forEach(function (currentDomImage) {
+
+        // Set up an onclick event listener for each image that will display the modal when clicked
         currentDomImage.onclick = function () {
+            // Show the modal
             modal.style.display = 'block';
+            // Set the source of the current image in the modal to the clicked image
             document.getElementById("currentImage").src = currentDomImage.src;
+            // Add a CSS class to the clicked image to gray it out
             currentDomImage.className = "grayed";
         };
     });
+
 </script>
 </body>
 </html>
