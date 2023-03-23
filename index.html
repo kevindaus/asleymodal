@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thumbnail Modals</title>
+    <style>
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Style for the modal content */
+        .modal-content {
+            background-color: white;
+            margin: 3vw auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80vw;
+        }
+
+        /* Style for the close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .image-list-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: normal;
+            align-items: stretch;
+            align-content: stretch;
+        }
+        .image-list-container img {
+            height: 400px;
+            cursor: pointer;
+        }
+        .image-list-container img.grayed {
+            filter: grayscale(100);
+        }
+
+    </style>
+</head>
+<body>
+
+<!--Modal-->
+<div id="thumbnailModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close" id="modal-close-icon">&times;</span>
+        <div><img src="#" alt="" id="currentImage"></div>
+    </div>
+</div>
+<!--End of Modal-->
+
+<div class="image-list-container">
+    <img src="dogs (1).jpg" alt="">
+    <img src="dogs (2).jpg" alt="">
+    <img src="dogs (3).jpg" alt="">
+    <img src="dogs (4).jpg" alt="">
+</div>
+
+<script type="application/javascript">
+    let modal = document.getElementById("thumbnailModal");
+    let closeModalIcon = document.getElementById("modal-close-icon");
+    closeModalIcon.onclick = function () {
+        modal.style.display = "none";
+    };
+    document.querySelectorAll(".image-list-container img").forEach(function (currentDomImage) {
+        currentDomImage.onclick = function () {
+            modal.style.display = 'block';
+            document.getElementById("currentImage").src = currentDomImage.src;
+            currentDomImage.className = "grayed";
+        };
+    });
+</script>
+</body>
+</html>
